@@ -27,13 +27,13 @@ function Content({piece}){
   return(
     <div>
       <p>
-        {piece[0].name}--{piece[0].excercises}
+        {piece[0].name}--{piece[0].exercises}
       </p>
       <p>
-        {piece[1].name}--{piece[1].excercises}
+        {piece[1].name}--{piece[1].exercises}
       </p>
       <p>
-        {piece[2].name}--{piece[2].excercises}
+        {piece[2].name}--{piece[2].exercises}
       </p>
     </div>
   )
