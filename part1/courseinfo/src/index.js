@@ -1,103 +1,66 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-
+import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-function Statistics({good,bad,neutral}){
-  var average=(good *1+bad * -1+neutral *0)/(good+neutral+bad);
-  var positive=(good)/(good+neutral+bad)*100;
-  
-    if (good > 0 || neutral > 0 || bad > 0){
-      return(
-      
-        
-        <div>
-           <h1>Statistics</h1>
-            <table>
-              <tbody>
-         
-          <Show s="good" e={good} />
-            <Show s="neutral" e={neutral} />
-            <Show s="bad" e={bad} />
-            <Show s="all" e={good+neutral+bad}/>
-            <Show s="average" e={average} />
-            <Show s="positive" e={ positive+"%"} />
-        
-        </tbody>
-
-        
-        </table>
-        </div>
-      )
-     
-
+const course = 'Half Stack application development'
+  const pieces = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
     }
-     
-      
-      return (
-        <p>no feedback given</p>
-      )
-    
-     
-
-  
-  
-
-
-
-}
-function Show({s,e}){
+  ]
+function Header(){
   return(
-    <tr>
-    <td>{s}</td>
-    <td>{e}</td>
-  </tr>
-
+    <h1>{course}</h1>
   )
-
 }
-function Unicef(){
-  const [good,setGood]=useState(
-    0
-  )
-  const [bad,setBad]=useState(
-    0
-  )
-  const [neutral,setNeutral]=useState(
-    0
-  )
-  return (
-    
-    
-      
-    
-    
+function Content({piece}){
+  return(
     <div>
-      <h1>Give feedback</h1>
-      <button onClick={() => setGood(good + 1)}>good</button>
-    <button onClick={() => setBad(bad + 1)}>bad</button>
-    <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
-    <Statistics good={good} bad={bad} neutral={neutral}></Statistics>
-    
-    
- 
+      <p>
+        {piece[0].name}--{piece[0].exercises}
+      </p>
+      <p>
+        {piece[1].name}--{piece[1].exercises}
+      </p>
+      <p>
+        {piece[2].name}--{piece[2].exercises}
+      </p>
     </div>
-    
-  
   )
-
-
-
 }
+  function Total({piece}){
+    var sum=0;
+    piece.map(piece =>
+      sum=sum+piece.exercises
+      )
+      return sum
+  }
+
 
 ReactDOM.render(
   <div>
-      <Unicef/>
-      
+      <Header/>
+      <Content piece={pieces}/>
+   <Total piece={pieces}/>
 
   </div>
-,
+  
+   
+
+ 
+   
+
+  ,
   document.getElementById('root')
 );
 

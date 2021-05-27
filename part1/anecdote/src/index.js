@@ -1,66 +1,69 @@
-import React, {useState} from 'react';
+
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-const course = 'Half Stack application development'
-  const pieces = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
-function Header(){
-  return(
-    <h1>{course}</h1>
+const anecdotes = [
+  'If it hurts, do it more often',
+  'Adding manpower to a late software project makes it later!',
+  'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
+  'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+  'Premature optimization is the root of all evil.',
+  'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
+]
+
+
+function Anecdote(){
+  const [selected,setSelected]=useState(0)
+  const [vote,setVote]=useState(
+    new Array(anecdotes.length).fill(0)
+
   )
-}
-function Content({piece}){
-  return(
+
+  function Randomanecdote(){
+    var h= Math.floor(Math.random() * 6);
+    setSelected(h) 
+  }
+  function Vote(){
+    const h=[...vote]
+    h[selected]+=1
+    setVote(h)
+  }
+  function Max(){
+    var h=0;
+    var index=0
+    vote.forEach((value, i) => {
+      if (h < value) {
+        h = value
+        index = i
+      }
+    })
+    return index;
+  }
+  const max=Max();
+  return (
     <div>
-      <p>
-        {piece[0].name}--{piece[0].exercises}
-      </p>
-      <p>
-        {piece[1].name}--{piece[1].exercises}
-      </p>
-      <p>
-        {piece[2].name}--{piece[2].exercises}
-      </p>
+      <h1>Annecdote of the day</h1>
+      <p>{anecdotes[selected]}</p><br></br>
+      <p> has {vote[selected]}</p>
+      <button onClick={Randomanecdote}>next</button>
+      <button onClick={Vote}>vote</button>
+      <h1>Annecdote with highest number of votes</h1>
+      <p>{anecdotes[max]}</p>
+      <p>{vote[max]}</p>
     </div>
   )
-}
-  function Total({piece}){
-    var sum=0;
-    piece.map(piece =>
-      sum=sum+piece.exercises
-      )
-      return sum
-  }
 
+
+
+
+
+}
+  
 
 ReactDOM.render(
-  <div>
-      <Header/>
-      <Content piece={pieces}/>
-   <Total piece={pieces}/>
-
-  </div>
-  
-   
-
- 
-   
-
-  ,
+ <Anecdote></Anecdote>,
   document.getElementById('root')
 );
 
