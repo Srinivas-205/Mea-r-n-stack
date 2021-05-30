@@ -50,7 +50,7 @@ const courses = [
 ]
 const Header =({part}) =>{
   return(
-    <h1>{part}</h1>
+    <h2>{part}</h2>
   )
 }
 const Content =({part}) =>{
