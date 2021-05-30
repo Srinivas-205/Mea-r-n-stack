@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { useState } from 'react'
 
-export default App;
+const App = () => {
+const [ persons, setPersons ] = useState([
+  { name: 'Arto Hellas' }
+]) 
+const [ newName, setNewName ] = useState('')
+
+return (
+  <div>
+    <h2>Phonebook</h2>
+    <form>
+      <div>
+        Filter: <input type="text" filter="" />
+      </div>
+    <h2>Add a new</h2>
+    <form>
+        name: <input type="text" Placeholder="Name" name="" />
+        number: <input type="phone" Placeholder="1234567890" name="" />
+    </form>  
+      <div>
+        <button type="submit">add</button>
+      </div>
+    </form>
+    </div>
+)  
+}
+export default App

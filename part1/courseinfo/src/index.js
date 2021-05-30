@@ -7,20 +7,39 @@ const course = 'Half Stack application development'
   const pieces = [
     {
       name: 'Fundamentals of React',
-      exercises: 10
+      exercises: 10,
+      id: 1
     },
     {
       name: 'Using props to pass data',
-      exercises: 7
+      exercises: 7,
+      id: 2
     },
     {
       name: 'State of a component',
-      exercises: 14
-    }
-  ]
+      exercises: 14,
+      id: 3
+    },
+    {
+      name: 'Redux',
+      exercises: 11,
+     id: 4  
+
+    },
+      {
+        name: 'Routing',
+        exercises: 3,
+        id: 1
+      },
+      {
+        name: 'Middlewares',
+        exercises: 7,
+        id: 2
+      }
+    ]
 function Header(){
   return(
-    <h1>{course}</h1>
+    <h2>{course}</h2>
   )
 }
 function Content({piece}){
@@ -35,25 +54,31 @@ function Content({piece}){
       <p>
         {piece[2].name}--{piece[2].exercises}
       </p>
+      <p>
+        {piece[3].name}--{piece[3].exercises}
+      </p>
     </div>
   )
 }
   function Total({piece}){
-    var sum=0;
+    var total=0;
     piece.map(piece =>
-      sum=sum+piece.exercises
+      total=total+piece.exercises
       )
-      return sum
+      return total
+
   }
 
 
 ReactDOM.render(
   <div>
+    <h1>Web development Circulum</h1>
       <Header/>
       <Content piece={pieces}/>
    <Total piece={pieces}/>
-
+   
   </div>
+  
   
    
 
