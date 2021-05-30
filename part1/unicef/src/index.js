@@ -17,12 +17,12 @@ function Statistics({good,bad,neutral}){
             <table>
               <tbody>
          
-          <Show a="good" b={good} />
-            <Show a="neutral" b={neutral} />
-            <Show a="bad" b={bad} />
-            <Show a="all" b={good+neutral+bad}/>
-            <Show a="average" b={average} />
-            <Show a="positive" b={ positive+"%"} />
+          <Show s="good" e={good} />
+            <Show s="neutral" e={neutral} />
+            <Show s="bad" e={bad} />
+            <Show s="all" e={good+neutral+bad}/>
+            <Show s="average" e={average} />
+            <Show s="positive" e={ positive+"%"} />
         
         </tbody>
 
@@ -47,11 +47,11 @@ function Statistics({good,bad,neutral}){
 
 
 }
-function Show({a,b}){
+function Show({s,e}){
   return(
     <tr>
-    <td>{a}</td>
-    <td>{b}</td>
+    <td>{s}</td>
+    <td>{e}</td>
   </tr>
 
   )
